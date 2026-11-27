@@ -168,7 +168,61 @@ def cadastrar_contato(contatos):
     contatos.append(contato)
     salvar_contatos(contatos)       # função da parte de persistência
     print("Contato cadastrado com sucesso!")
+    
+# ---------------------------------------------------------------
+# PARTE 2 - BUSCA E LISTAGEM DE CONTATOS
+# ---------------------------------------------------------------
+def buscar_contato(contatos):
+    """pesquisa contatos pelo nome e mostra os dados encontrados."""
+    print("\n=== BUSCAR CONTATO ===")
 
+    # pede o nome que o usuário deseja pesquisar
+    nome = input("Nome: ").strip().lower()
+
+    # verifica se algum contato foi encontrado
+    encontrado = False
+
+    # percorre todos os contatos cadastrados
+    for contato in contatos:
+        if nome in contato["nome"].lower():
+            print("\n=== CONTATO ENCONTRADO ===")
+            print("Nome:", contato["nome"])
+            print("Telefone:", contato["telefone"])
+            print("E-mail:", contato["email"])
+            print("Endereço:", contato["endereco"])
+            print("Apelido:", contato["apelido"])
+            print("Nascimento:", contato["nascimento"])
+            print("Observações:", contato["observacoes"])
+
+            encontrado = True
+
+    # informa quando a pesquisa não encontra resultados
+    if encontrado == False:
+        print("Nenhum contato encontrado!")
+# informa quando a pesquisa não encontra resultados
+    if encontrado == False:
+        print("Nenhum contato encontrado!")
+
+def listar_contatos(contatos):
+    """mostra todos os dados dos contatos cadastrados."""
+    print("\n=== LISTA DE CONTATOS ===")
+
+    # verifica se a lista possui contatos
+    if len(contatos) == 0:
+        print("Nenhum contato cadastrado!")
+    else:
+        # percorre e exibe todos os dados de cada contato
+        for contato in contatos:
+            print("\n-------------------------")
+            print("Nome:", contato["nome"])
+            print("Telefone:", contato["telefone"])
+            print("E-mail:", contato["email"])
+            print("Endereço:", contato["endereco"])
+            print("Apelido:", contato["apelido"])
+            print("Nascimento:", contato["nascimento"])
+            print("Observações:", contato["observacoes"])
+
+    print("\n=== FIM DA LISTA ===")
 
 # ---------------------------------------------------------------
 # TESTE SOZINHO (só roda se você executar ESTE arquivo diretamente)
